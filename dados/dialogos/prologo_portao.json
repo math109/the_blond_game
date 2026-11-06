@@ -1,0 +1,105 @@
+{
+  "personagens": {
+	"BIA": {
+	  "nome": "Bia",
+	  "retrato": "res://assets/retratos/bia.png",
+	  "cor": "#e8dcff"
+	},
+	"RAIMUNDO": {
+	  "nome": "Rádio",
+	  "retrato": "res://assets/retratos/raimundo_radio.png",
+	  "cor": "#b8e0a8"
+	},
+	"VETERANO": {
+	  "nome": "Veterano",
+	  "cor": "#d8a0a0"
+	},
+	"VETERANA": {
+	  "nome": "Veterana",
+	  "cor": "#d8a0c8"
+	},
+	"THEO": {
+	  "nome": "Théo",
+	  "cor": "#ffd08a"
+	},
+	"YASMIN": {
+	  "nome": "Yasmin",
+	  "cor": "#9ad8ff"
+	}
+  },
+  "nos": {
+	"inicio": {
+	  "quem": "VETERANO",
+	  "texto": "Calouro só vira gente depois do trote. Faz parte, a tradição é essa.",
+	  "proximo": "v2"
+	},
+	"v2": {
+	  "quem": "VETERANA",
+	  "texto": "Vocês conhecem a Loira do Banheiro? Ela morava aqui. Dizem que quem chama três vezes não volta igual.",
+	  "proximo": "theo"
+	},
+	"theo": {
+	  "quem": "THEO",
+	  "texto": "Eu topo. Se der certo, vou ter a melhor história do semestre.",
+	  "proximo": "yasmin"
+	},
+	"yasmin": {
+	  "quem": "YASMIN",
+	  "texto": "Isso é uma péssima ideia, Théo.",
+	  "proximo": "v3"
+	},
+	"v3": {
+	  "quem": "VETERANO",
+	  "texto": "Quem não for é frouxo. Tem foto como prova, hein.",
+	  "proximo": "escolha_trote"
+	},
+	"escolha_trote": {
+	  "quem": "BIA",
+	  "tipo": "escolha",
+	  "id_escolha": "trote",
+	  "texto": "O que eu digo?",
+	  "opcoes": [
+		{
+		  "texto": "\"Não precisa. Vamos embora.\"",
+		  "empatia": 1,
+		  "proximo": "r_embora"
+		},
+		{
+		  "texto": "\"Vamos de uma vez, e acaba rápido.\"",
+		  "empatia": 0,
+		  "proximo": "r_rapido"
+		},
+		{
+		  "texto": "\"Se for só pra rir, eu filmo.\"",
+		  "empatia": -1,
+		  "efeitos": {
+			"flag": "filmou_trote"
+		  },
+		  "proximo": "r_filmo"
+		},
+		{"texto": "\"Yasmin, você vem comigo?\"", "empatia": 1, "se": {"empatia_min": 1}, "proximo": "fim"}
+	  ]
+	},
+	"r_embora": {
+	  "quem": "VETERANO",
+	  "texto": "Hahaha! Olha a calourinha com medo!",
+	  "proximo": "r_embora2"
+	},
+	"r_embora2": {
+	  "quem": "YASMIN",
+	  "texto": "(baixinho) Valeu por tentar.",
+	  "proximo": "fim"
+	},
+	"r_rapido": {
+	  "quem": "VETERANO",
+	  "texto": "Essa entendeu o espírito.",
+	  "proximo": "fim"
+	},
+	"r_filmo": {
+	  "quem": "BIA",
+	  "tipo": "pensamento",
+	  "texto": "Levanto o celular e começo a gravar. Yasmin olha para mim e não diz nada.",
+	  "proximo": "fim"
+	}
+  }
+}

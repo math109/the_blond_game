@@ -1,0 +1,69 @@
+{
+  "personagens": {
+	"BIA": {
+	  "nome": "Bia",
+	  "retrato": "res://assets/retratos/bia.png",
+	  "cor": "#e8dcff"
+	},
+	"RAIMUNDO": {
+	  "nome": "Rádio",
+	  "retrato": "res://assets/retratos/raimundo_radio.png",
+	  "cor": "#b8e0a8"
+	}
+  },
+  "nos": {
+	"inicio": {
+	  "quem": "BIA",
+	  "tipo": "pensamento",
+	  "texto": "Isso não é o Bloco Antigo.",
+	  "proximo": "chama"
+	},
+	"chama": {
+	  "quem": "BIA",
+	  "texto": "Théo? Yasmin?",
+	  "proximo": "eco"
+	},
+	"eco": {
+	  "quem": "BIA",
+	  "tipo": "pensamento",
+	  "texto": "Só o eco responde. Um alto-falante no teto chia.",
+	  "proximo": "radio1"
+	},
+	"radio1": {
+	  "quem": "RAIMUNDO",
+	  "texto": "Câmbio, menina. Fica no claro, que ela não gosta de luz forte.",
+	  "proximo": "quem_fala"
+	},
+	"quem_fala": {
+	  "quem": "BIA",
+	  "texto": "Quem tá falando? Alô?",
+	  "proximo": "radio2"
+	},
+	"radio2": {
+	  "quem": "RAIMUNDO",
+	  "texto": "Vocês chamaram ela, não foi? Quando alguém chama ela, a noite de 98 volta. As luzes, as portas, tudo. E cada um acorda num canto do campus.",
+	  "proximo": "amigos"
+	},
+	"amigos": {
+	  "quem": "BIA",
+	  "texto": "Meus amigos tão aqui?",
+	  "proximo": "radio3"
+	},
+	"radio3": {
+	  "quem": "RAIMUNDO",
+	  "texto": "Tão. Espalhados. Acha eles.",
+	  "proximo": "radio4"
+	},
+	"radio4": {
+	  "quem": "RAIMUNDO",
+	  "texto": "E presta atenção: o portão só abre quando o dia nascer, ou quando alguém ouvir a história dela até o fim. Câmbio.",
+	  "proximo": "objetivo"
+	},
+	"objetivo": {
+	  "quem": "BIA",
+	  "tipo": "pensamento",
+	  "texto": "Achar os outros. Descobrir que história é essa. Sair daqui.",
+	  "proximo": "fim"
+	}
+  }
+}

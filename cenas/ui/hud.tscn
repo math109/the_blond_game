@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b71q8c0tmawon"]
+
+[ext_resource type="Script" uid="uid://lx7d7hk3y8nm" path="res://scripts/ui/hud.gd" id="1_hud"]
+[ext_resource type="Shader" uid="uid://bxsxuggivqpkb" path="res://shaders/medo.gdshader" id="2_shader"]
+[ext_resource type="FontFile" uid="uid://dhnghe1b6lust" path="res://assets/fonts/Silkscreen-Regular.ttf" id="3_fonte"]
+[ext_resource type="AudioStream" uid="uid://d0maaqhqaxlk6" path="res://assets/audio/sfx/40_coracao_lento.wav" id="4_lento"]
+[ext_resource type="AudioStream" uid="uid://d1ldocqheoi2g" path="res://assets/audio/sfx/41_coracao_rapido.wav" id="5_rapido"]
+[ext_resource type="Script" uid="uid://bymo810u7uk3v" path="res://scripts/ui/tentaculos.gd" id="6_tent"]
+
+[sub_resource type="ShaderMaterial" id="Material_medo"]
+shader = ExtResource("2_shader")
+shader_parameter/medo = 0.0
+
+[node name="HUD" type="CanvasLayer" unique_id=141894003]
+script = ExtResource("1_hud")
+
+[node name="Tentaculos" type="Node2D" parent="." unique_id=1964191756]
+script = ExtResource("6_tent")
+
+[node name="EfeitoMedo" type="ColorRect" parent="." unique_id=146200649]
+material = SubResource("Material_medo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bateria" type="Label" parent="." unique_id=238631022]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 160.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_fonte")
+theme_override_font_sizes/font_size = 8
+text = "LANTERNA 100%"
+
+[node name="CoracaoLento" type="AudioStreamPlayer" parent="." unique_id=52716954 groups=["som_em_loop"]]
+stream = ExtResource("4_lento")
+volume_db = -80.0
+bus = &"SFX"
+
+[node name="CoracaoRapido" type="AudioStreamPlayer" parent="." unique_id=790644302 groups=["som_em_loop"]]
+stream = ExtResource("5_rapido")
+volume_db = -80.0
+bus = &"SFX"

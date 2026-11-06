@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://e4sgepfs67l8"]
+
+[ext_resource type="Script" uid="uid://cfui676tuweg4" path="res://scripts/ui/caixa_dialogo.gd" id="1_script"]
+[ext_resource type="FontVariation" path="res://assets/fonts/fonte_dialogo.tres" id="2_fonte"]
+[ext_resource type="Shader" uid="uid://bs1yexe3kjqv3" path="res://shaders/retrato.gdshader" id="3_retrato"]
+[ext_resource type="AudioStream" uid="uid://dm6hnjji5g0lq" path="res://assets/audio/sfx/33_texto_dialogo.wav" id="4_letra"]
+[ext_resource type="AudioStream" uid="uid://dp0m2o86iurhe" path="res://assets/audio/sfx/34_escolha_aparece.wav" id="5_escolha"]
+
+[sub_resource type="StyleBoxFlat" id="OpcaoFoco"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.13, 0.15, 0.27, 0.97)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.82, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="Opcao"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.043, 0.051, 0.078, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.23, 0.25, 0.38, 1)
+
+[sub_resource type="Theme" id="Tema"]
+default_font = ExtResource("2_fonte")
+default_font_size = 16
+Button/colors/font_color = Color(0.75, 0.77, 0.86, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/styles/focus = SubResource("OpcaoFoco")
+Button/styles/hover = SubResource("OpcaoFoco")
+Button/styles/normal = SubResource("Opcao")
+Button/styles/pressed = SubResource("OpcaoFoco")
+
+[sub_resource type="StyleBoxFlat" id="Caixa"]
+bg_color = Color(0.043, 0.051, 0.078, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.23, 0.25, 0.38, 1)
+
+[sub_resource type="ShaderMaterial" id="MaterialRetrato"]
+shader = ExtResource("3_retrato")
+shader_parameter/escurecer = 0.0
+
+[sub_resource type="LabelSettings" id="SetaEstilo"]
+font = ExtResource("2_fonte")
+font_color = Color(0.85, 0.82, 1, 1)
+
+[node name="Dialogo" type="CanvasLayer" unique_id=405002272]
+layer = 5
+script = ExtResource("1_script")
+
+[node name="Painel" type="Control" parent="." unique_id=859465536]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Tema")
+
+[node name="Caixa" type="Panel" parent="Painel" unique_id=1281474550]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 262.0
+offset_right = 632.0
+offset_bottom = 352.0
+theme_override_styles/panel = SubResource("Caixa")
+
+[node name="Retrato" type="TextureRect" parent="Painel" unique_id=1091515723]
+material = SubResource("MaterialRetrato")
+layout_mode = 0
+offset_left = 14.0
+offset_top = 170.0
+offset_right = 110.0
+offset_bottom = 266.0
+stretch_mode = 5
+
+[node name="Nome" type="Label" parent="Painel" unique_id=2026828156]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 266.0
+offset_right = 420.0
+offset_bottom = 284.0
+text = "Bia"
+
+[node name="Texto" type="RichTextLabel" parent="Painel" unique_id=832588368]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 284.0
+offset_right = 622.0
+offset_bottom = 348.0
+bbcode_enabled = true
+text = "Texto"
+scroll_active = false
+
+[node name="Seta" type="Label" parent="Painel" unique_id=1853349862]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 330.0
+offset_right = 626.0
+offset_bottom = 348.0
+text = "»"
+label_settings = SubResource("SetaEstilo")
+
+[node name="Opcoes" type="VBoxContainer" parent="Painel" unique_id=738544231]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 170.0
+offset_right = 632.0
+offset_bottom = 256.0
+alignment = 2
+
+[node name="SomLetra" type="AudioStreamPlayer" parent="." unique_id=355590577]
+stream = ExtResource("4_letra")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SomEscolha" type="AudioStreamPlayer" parent="." unique_id=254266042]
+stream = ExtResource("5_escolha")
+volume_db = -4.0
+bus = &"SFX"

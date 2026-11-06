@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://d35gh60dhxl2i"]
+
+[ext_resource type="Script" uid="uid://bfbwmdsu28epy" path="res://scripts/fases/fase.gd" id="1_fase"]
+[ext_resource type="Texture2D" uid="uid://p3edxgrk1lep" path="res://assets/cenarios/corredor.png" id="2_fundo"]
+[ext_resource type="PackedScene" uid="uid://ds20eb3atsdjx" path="res://cenas/personagens/bia.tscn" id="3_bia"]
+[ext_resource type="AudioStream" uid="uid://dy3s83t4psus0" path="res://assets/audio/musica/02_ambiente_base.ogg" id="4_amb"]
+[ext_resource type="AudioStream" uid="uid://b7ydbkepvthyy" path="res://assets/audio/ambiente/15_lampada_zumbido.wav" id="5_lamp"]
+[ext_resource type="PackedScene" uid="uid://b71q8c0tmawon" path="res://cenas/ui/hud.tscn" id="6_hud"]
+[ext_resource type="Script" uid="uid://clu5vwgqnui13" path="res://scripts/objetos/interagivel.gd" id="7_inter"]
+
+[sub_resource type="RectangleShape2D" id="Shape_ParedeTopo"]
+size = Vector2(960, 222)
+
+[sub_resource type="RectangleShape2D" id="Shape_ParedeEsquerda"]
+size = Vector2(20, 640)
+
+[sub_resource type="RectangleShape2D" id="Shape_ParedeDireita"]
+size = Vector2(20, 640)
+
+[sub_resource type="RectangleShape2D" id="Shape_ParedeBaixoEsquerda"]
+size = Vector2(438, 122)
+
+[sub_resource type="RectangleShape2D" id="Shape_ParedeBaixoDireita"]
+size = Vector2(424, 122)
+
+[sub_resource type="RectangleShape2D" id="Shape_FundoDaSaida"]
+size = Vector2(98, 80)
+
+[sub_resource type="RectangleShape2D" id="Shape_Bebedouro"]
+size = Vector2(52, 20)
+
+[sub_resource type="RectangleShape2D" id="Shape_Extintor"]
+size = Vector2(20, 16)
+
+[sub_resource type="RectangleShape2D" id="Shape_Banco"]
+size = Vector2(112, 30)
+
+[sub_resource type="RectangleShape2D" id="Shape_Corrimao"]
+size = Vector2(22, 170)
+
+[sub_resource type="RectangleShape2D" id="Area_Quadro"]
+size = Vector2(110, 33)
+
+[sub_resource type="RectangleShape2D" id="Area_Bebedouro"]
+size = Vector2(56, 22)
+
+[sub_resource type="RectangleShape2D" id="Area_PortaWC"]
+size = Vector2(50, 22)
+
+[sub_resource type="RectangleShape2D" id="Area_Item"]
+size = Vector2(38, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i88t"]
+size = Vector2(30, 28)
+
+[node name="Corredor" type="Node2D" unique_id=1332713042]
+script = ExtResource("1_fase")
+dialogo_ao_entrar = "res://dados/dialogos/cap1_corredor.json"
+
+[node name="Escuridao" type="CanvasModulate" parent="." unique_id=1744810400]
+color = Color(0.1, 0.11, 0.18, 1)
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=973073267]
+texture = ExtResource("2_fundo")
+centered = false
+
+[node name="Paredes" type="StaticBody2D" parent="." unique_id=572326177]
+
+[node name="ParedeTopo" type="CollisionShape2D" parent="Paredes" unique_id=678215930]
+position = Vector2(480, 111)
+shape = SubResource("Shape_ParedeTopo")
+
+[node name="ParedeEsquerda" type="CollisionShape2D" parent="Paredes" unique_id=1433781483]
+position = Vector2(10, 320)
+shape = SubResource("Shape_ParedeEsquerda")
+
+[node name="ParedeDireita" type="CollisionShape2D" parent="Paredes" unique_id=1155501917]
+position = Vector2(950, 320)
+shape = SubResource("Shape_ParedeDireita")
+
+[node name="ParedeBaixoEsquerda" type="CollisionShape2D" parent="Paredes" unique_id=1079576773]
+position = Vector2(219, 579)
+shape = SubResource("Shape_ParedeBaixoEsquerda")
+
+[node name="ParedeBaixoDireita" type="CollisionShape2D" parent="Paredes" unique_id=1672735321]
+position = Vector2(748, 579)
+shape = SubResource("Shape_ParedeBaixoDireita")
+
+[node name="FundoDaSaida" type="CollisionShape2D" parent="Paredes" unique_id=178951426]
+position = Vector2(487, 600)
+shape = SubResource("Shape_FundoDaSaida")
+
+[node name="Bebedouro" type="CollisionShape2D" parent="Paredes" unique_id=1584445891]
+position = Vector2(510, 220)
+shape = SubResource("Shape_Bebedouro")
+
+[node name="Extintor" type="CollisionShape2D" parent="Paredes" unique_id=931022702]
+position = Vector2(690, 222)
+shape = SubResource("Shape_Extintor")
+
+[node name="Banco" type="CollisionShape2D" parent="Paredes" unique_id=1705710593]
+position = Vector2(152, 253)
+shape = SubResource("Shape_Banco")
+
+[node name="Moveis" type="StaticBody2D" parent="." unique_id=409396918]
+
+[node name="Corrimao" type="CollisionShape2D" parent="Moveis" unique_id=681714825]
+position = Vector2(873, 313)
+shape = SubResource("Shape_Corrimao")
+
+[node name="Interagiveis" type="Node2D" parent="." unique_id=1899750081]
+
+[node name="QuadroDeAvisos" type="Area2D" parent="Interagiveis" unique_id=150792655]
+position = Vector2(600, 236)
+script = ExtResource("7_inter")
+acao = 1
+dialogo = "res://dados/dialogos/cap1_quadro.json"
+altura_do_aviso = 80.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/QuadroDeAvisos" unique_id=1162886941]
+position = Vector2(0, -4.5)
+shape = SubResource("Area_Quadro")
+
+[node name="Bebedouro" type="Area2D" parent="Interagiveis" unique_id=1647827069]
+position = Vector2(510, 238)
+script = ExtResource("7_inter")
+texto = "Água geladinha. Pelo menos isso funciona."
+altura_do_aviso = 70.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Bebedouro" unique_id=349606800]
+shape = SubResource("Area_Bebedouro")
+
+[node name="PortaWC" type="Area2D" parent="Interagiveis" unique_id=827958471]
+position = Vector2(762, 236)
+script = ExtResource("7_inter")
+texto = "O banheiro feminino. Trancado. Ainda bem."
+altura_do_aviso = 60.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/PortaWC" unique_id=1387184270]
+shape = SubResource("Area_PortaWC")
+
+[node name="PowerBank" type="Area2D" parent="Interagiveis" unique_id=1071051202]
+position = Vector2(195, 252)
+script = ExtResource("7_inter")
+acao = 2
+item_id = "power_bank"
+altura_do_aviso = 30.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/PowerBank" unique_id=1550252852]
+position = Vector2(5, 5)
+shape = SubResource("Area_Item")
+
+[node name="Algodao" type="Area2D" parent="Interagiveis" unique_id=1450066296]
+position = Vector2(700, 300)
+script = ExtResource("7_inter")
+acao = 2
+item_id = "algodao"
+altura_do_aviso = 26.0
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Algodao" unique_id=1328485295]
+shape = SubResource("Area_Item")
+
+[node name="Extintor" type="Area2D" parent="Interagiveis" unique_id=211314634]
+position = Vector2(690, 238)
+script = ExtResource("7_inter")
+texto = "Se tudo pegar fogo, pelo menos tem isso aqui."
+item_id = "extintor"
+altura_do_aviso = 70.0
+metadata/_custom_type_script = "uid://clu5vwgqnui13"
+
+[node name="Forma" type="CollisionShape2D" parent="Interagiveis/Extintor" unique_id=1286529953]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_0i88t")
+
+[node name="Bia" parent="." unique_id=1319321819 instance=ExtResource("3_bia")]
+position = Vector2(487, 470)
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="." unique_id=1852935955 groups=["som_em_loop"]]
+stream = ExtResource("4_amb")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+
+[node name="ZumbidoLampada" type="AudioStreamPlayer2D" parent="." unique_id=780855861 groups=["som_em_loop"]]
+position = Vector2(270, 240)
+stream = ExtResource("5_lamp")
+autoplay = true
+max_distance = 420.0
+bus = &"SFX"
+
+[node name="HUD" parent="." unique_id=487142871 instance=ExtResource("6_hud")]

@@ -1,0 +1,38 @@
+{
+  "personagens": {
+	"BIA": {
+	  "nome": "Bia",
+	  "retrato": "res://assets/retratos/bia.png",
+	  "cor": "#e8dcff"
+	}
+  },
+  "nos": {
+	"inicio": {
+	  "quem": "BIA",
+	  "tipo": "pensamento",
+	  "texto": "Um cartaz novo está descolando. Por baixo dele tem um papel amarelado, velho.",
+	  "proximo": "papel1"
+	},
+	"papel1": {
+	  "quem": "BIA",
+	  "texto": "\"Trote solidário: quinta, meia-noite.\"",
+	  "proximo": "papel2"
+	},
+	"papel2": {
+	  "quem": "BIA",
+	  "tipo": "pensamento",
+	  "texto": "E um papel menor, escrito à caneta:",
+	  "proximo": "papel3"
+	},
+	"papel3": {
+	  "quem": "BIA",
+	  "texto": "\"Loirinha, cadê o tom?\"",
+	  "efeitos": {
+		"flag": "viu_quadro_1998",
+		"medo": 5,
+		"nota": "Trote solidário: quinta, meia-noite."
+	  },
+	  "proximo": "fim"
+	}
+  }
+}
